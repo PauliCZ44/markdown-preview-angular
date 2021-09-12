@@ -52,6 +52,7 @@ loadScript(name: string) {
             }
             script.onerror = (error: any) => resolve({script: name, loaded: false, status: 'Loaded'});
             document.getElementsByTagName('head')[0].appendChild(script);
+            console.log("scripts loade?", script);
         }
     });
 }
