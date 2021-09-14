@@ -49,6 +49,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   loadScripts() {
-    this.scriptService.load("FCCTests")
+    this.scriptService.load("FCCTests", "FCCTestss")
   }
 }
