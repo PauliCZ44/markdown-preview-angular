@@ -1,6 +1,10 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ScriptService } from './scripts.service';
+
 import * as ace from "ace-builds";
+import * as marked from "marked"
+import { starterMarkup } from './starterMarkup';
+
 
 @Component({
   selector: 'app-root',
@@ -9,13 +13,17 @@ import * as ace from "ace-builds";
 })
 
 export class AppComponent implements OnInit, AfterViewInit {
-  constructor(private scriptService: ScriptService) { }
+  constructor(private scriptService: ScriptService) {}
 
   title = 'markdown-app';
-  content = "<h1>Ace Editor works great in Angular!</h1>"
+  editorContent = starterMarkup
+  previewContent = marked(this.editorContent)
+
   @ViewChild("editor") private editor!: ElementRef<HTMLElement>;
+  @ViewChild("preview") private preview!: ElementRef<HTMLElement>;
 
   ngOnInit() {
+    
     console.log("init");
     this.loadScripts()
   }
@@ -25,13 +33,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     ace.config.set("fontSize", "14px");
     ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict')
     const aceEditor = ace.edit(this.editor.nativeElement);
-    aceEditor.session.setValue(this.content);
+    aceEditor.container.style.lineHeight = "1.44"
+    aceEditor.session.setValue(this.editorContent);
     aceEditor.setTheme('ace/theme/twilight');
     aceEditor.session.setMode('ace/mode/markdown');
 
+    this.previewContent = marked(this.editorContent)
+
     aceEditor.on("change", () => {
-      this.content = aceEditor.getValue()
+      this.editorContent = aceEditor.getValue()
+      this.previewContent = marked(this.editorContent)
     });
+
+
   }
 
   loadScripts() {

@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~normalize.css';
+@import '@primer/css/core/index.scss';
+@import "@primer/css/markdown/index.scss";
+@import "@primer/css/header/index.scss";
 
-body {
-    background-color: rgb(95, 95, 95);
+.ace-twilight {
+    background-color: inherit;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
 }

@@ -1,9 +1,9 @@
 
+<header></header>
 <div class="editor-layout">
   <div name="editor" #editor class="app-ace-editor" id="editor" cols="30" rows="10"></div>
   <div class="divider"></div>
-  <div name="preview" id="preview" cols="30" rows="10">
-    {{content}}
+  <div name="preview" #preview id="preview" cols="30" rows="10" [innerHTML]="previewContent" class="markdown-body">
   </div>
 </div>
 

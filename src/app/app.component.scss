@@ -1,14 +1,20 @@
 .divider {
-    background-color: grey;
-    width: 25px !important;
+    background-color: var(--color-auto-gray-8);
+    width: 15px !important;
     height: 100%;
 }
 
 .editor-layout {
     display: flex;
-    height: 100vh;
+    height: 100%;
+    overflow: hidden;
     div {
         flex-grow: 1;
         width: 100%;
     }
+}
+
+#preview {
+    padding: 1rem;
+    overflow: auto;
 }
