@@ -5,6 +5,9 @@ import * as ace from "ace-builds";
 import * as marked from "marked"
 import { starterMarkup } from './starterMarkup';
 
+marked.setOptions({
+  breaks: true,
+});
 
 @Component({
   selector: 'app-root',
@@ -15,11 +18,18 @@ import { starterMarkup } from './starterMarkup';
 export class AppComponent implements OnInit, AfterViewInit {
   constructor(private scriptService: ScriptService) {}
 
+  
   title = 'markdown-app';
+  text = starterMarkup;
   editorContent = starterMarkup
   previewContent = marked(this.editorContent)
 
+  onFalseEditorChange = () => {
+    this.previewContent = marked(this.falseEditor.nativeElement.value)
+  }
+
   @ViewChild("editor") private editor!: ElementRef<HTMLElement>;
+  @ViewChild("falseEditor") private falseEditor!: ElementRef<HTMLTextAreaElement>;
   @ViewChild("preview") private preview!: ElementRef<HTMLElement>;
 
   ngOnInit() {
@@ -42,9 +52,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     aceEditor.on("change", () => {
       this.editorContent = aceEditor.getValue()
+      this.falseEditor.nativeElement.value = this.editorContent
       this.previewContent = marked(this.editorContent)
     });
 
+    
 
   }
 

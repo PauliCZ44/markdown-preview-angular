@@ -21,6 +21,7 @@
     "@angular/router": "~11.2.11",
     "@primer/css": "^17.10.0",
     "ace-builds": "^1.4.12",
+    "angular-custom-modal": "^1.2.0",
     "marked": "^3.0.4",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.6.0",
