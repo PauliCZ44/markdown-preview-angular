@@ -9,3 +9,4 @@ Made by Pavel Stastny. <span class="d-inline-block">[My github.](https://github.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
 
+## [Open live demo](https://paulicz44.github.io/markdown-preview-angular/)
